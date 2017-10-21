@@ -1,6 +1,6 @@
 
  import React from 'react';
- import Header from "../components/Header";
+ import Header from "./Header";
  import Nav from "../components/Nav";
  import Container from "../components/Container";
  import Row from "../components/Row";

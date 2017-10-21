@@ -1,7 +1,7 @@
  import React from 'react';
- import Header from "../components/Header";
+ import Header from "./Header";
  import Nav from "../components/Nav";
- import About from "../components/About";
+ import About from "./About";
  import Footer from "../components/Footer";
  import H from "../css/H.css";
 

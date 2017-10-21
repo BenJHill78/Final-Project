@@ -1,6 +1,6 @@
  
  import React, { Component } from "react";
- import Header from "./Header";
+ import Header from "../components/Header";
  import Nav from "../components/Nav";
  import Jumbotron from "../components/Jumbotron";
  import DeleteBtn from "../components/DeleteBtn";
@@ -8,8 +8,8 @@
  import { Col, Row, Container } from "../components/Grid";
  import { List, ListItem } from "../components/List";
  import { Input, TextArea, FormBtn } from "../components/Form";
- import H from "../css/H.css";
- import Background from "../images/entrance1.jpeg";
+ import H from "../../css/H.css";
+ import Background from "../../images/entrance1.jpeg";
 
     class Request extends Component {
 
@@ -25,14 +25,14 @@
 
   // When the component mounts, load all requests and save them to this.state.request
   componentDidMount() {
-    this.loadRequest();
+    this.loadrequest();
   }
 
   // Loads all requests  and sets them to this.state.requests
-  loadRequest = () => {
+  loadrequest = () => {
     API.getRequest()
       .then(res =>
-        this.setState({ allrequests: res.data, nhname: "", address: "", requestname: "", status: "" })
+        this.setState({ allrequests: res.data, nhname: "", address: "", request: "", status: "" })
       )
       .catch(err => console.log(err));
   };
@@ -56,11 +56,11 @@
   // Then reload request from the database
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.nhname && this.state.address && this.state.requestname) {
+    if (this.state.nhname && this.state.address && this.state.request) {
       API.saveRequest({
         nhname: this.state.nhname,
         address: this.state.address,
-        request: this.state.requestname,
+        request: this.state.request,
         status: this.state.status      
       })
         .then(res => this.loadRequest())
@@ -72,7 +72,7 @@
     return (
         
       <Container fluid>
-        <div className= "background">
+        <Row className="Background">
             <Row>
           <Col size="md-12">
               <h1>Welcome Home.</h1> 
@@ -96,7 +96,7 @@
                 placeholder="Address (required)"
               />
               <TextArea
-                value={this.state.requestname}
+                value={this.state.request}
                 onChange={this.handleInputChange}
                 name="request"
                 placeholder="Request (required)"
@@ -139,13 +139,13 @@
                     Orlando, Florida 32822</h4>
             
           </Col>
-
-        </div>
+        </Row>
       </Container>
     );
   }
 }
 
- 
+
+
 
 export default Request; 

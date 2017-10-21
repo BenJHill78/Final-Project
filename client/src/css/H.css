@@ -8,9 +8,9 @@
 .header{
     border: 2px black;
     border-radius: 5px;
-    color: darkslategray;
+    color: burlywood;
     text-align: center;
-        z-index: 8;
+    z-index: 8;
 }
 
 .background{
@@ -26,15 +26,19 @@
     top: 0;
     left: 0;
     text-align: center;
-    color: darkslategray;
-    opacity: .5;
+    color: burlywood;
     z-index: -1;
 }
 
 .about{
     
     text-align: center;
+    color: burlywood;
+}
+
+.h1{
+    text-align: center;
 }
 
 
-@media screen and (max-width: 1024px) {}
+

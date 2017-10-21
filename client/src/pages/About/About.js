@@ -27,8 +27,8 @@ const About = () => (
     
     </h3>
 
-    <Link to="/HOAManager"><p>HOA Manager Login</p></Link>
-    <Link to="/HomeOwner"><p>Home Owner Login</p></Link>
+    <Link to="./Manager/HOAManager"><p>HOA Manager Login</p></Link>
+    <Link to="./Owner/HomeOwner"><p>Home Owner Login</p></Link>
     
     
     </div>
