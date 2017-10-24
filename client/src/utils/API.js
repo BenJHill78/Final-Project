@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   // Gets all requests
-  getRequest: function() {
+  getRequests: function() {
     return axios.get("/api/requests");
   },
   // Gets the request with the given id

@@ -28,6 +28,7 @@
     text-align: center;
     color: burlywood;
     z-index: -1;
+    overflow: auto;
 }
 
 .about{

@@ -5,6 +5,6 @@ const requestRoutes = require("./requests");
 // Auth routes
 router.use("/auth", authRoutes);
 // neighborhood routes
-router.use("/request", requestRoutes);
+router.use("/requests", requestRoutes);
 
 module.exports = router;

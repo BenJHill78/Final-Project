@@ -11,7 +11,7 @@ mongoose.connect(
 
 const requestSeed = [
   {
-    nhname: "Stone Creekpen",
+    neighborhood: "Stone Creekpen",
     address:
       "123 Internet Street Orlando FL 32822",
     request: "New paint - Red",
@@ -19,14 +19,14 @@ const requestSeed = [
     date: new Date(Date.now()) 
   },
   {
-    nhname: "Stone Creekapp",
+    neighborhood: "Stone Creekapp",
     address:
       "123 Internet Street Orlando FL 32822",
     request: "New paint - Black",
     status: "approved",
     date: new Date(Date.now()) 
   },  {
-    nhname: "Stone Creekden",
+    neighborhood: "Stone Creekden",
     address:
       "123 Internet Street Orlando FL 32822",
     request: "New paint - Orange",

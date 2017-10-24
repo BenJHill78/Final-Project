@@ -1,22 +1,22 @@
  
  import React, { Component } from "react";
- import Header from "../components/Header";
- import Nav from "../components/Nav";
- import Jumbotron from "../components/Jumbotron";
- import DeleteBtn from "../components/DeleteBtn";
- import API from "../utils/API";
- import { Col, Row, Container } from "../components/Grid";
- import { List, ListItem } from "../components/List";
- import { Input, TextArea, FormBtn } from "../components/Form";
+ import Header from "../../components/Header/Header";
+ import Nav from "../../components/Nav";
+ import Jumbotron from "../../components/Jumbotron";
+ import DeleteBtn from "../../components/DeleteBtn";
+ import API from "../../utils/API";
+ import { Col, Row, Container } from "../../components/Grid";
+ import { List, ListItem } from "../../components/List";
+ import { Input, TextArea, FormBtn } from "../../components/Form";
  import H from "../../css/H.css";
- import Background from "../../images/entrance1.jpeg";
+
 
     class Request extends Component {
 
 
   // Setting our component's initial state
    state = {
-    nhname: "",
+    neighborhood: "",
     address: "",
     request: "",
     status: "",
@@ -25,14 +25,15 @@
 
   // When the component mounts, load all requests and save them to this.state.request
   componentDidMount() {
-    this.loadrequest();
+    this.loadRequest();
   }
 
   // Loads all requests  and sets them to this.state.requests
-  loadrequest = () => {
-    API.getRequest()
+  loadRequest = () => {
+      console.log("load requests running");
+    API.getRequests()
       .then(res =>
-        this.setState({ allrequests: res.data, nhname: "", address: "", request: "", status: "" })
+        this.setState({ allrequests: res.data, neighborhood: "", address: "", request: "", status: "" })
       )
       .catch(err => console.log(err));
   };
@@ -56,9 +57,9 @@
   // Then reload request from the database
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.nhname && this.state.address && this.state.request) {
+    if (this.state.address && this.state.request) {
       API.saveRequest({
-        nhname: this.state.nhname,
+        neighborhood: this.state.neighborhood,
         address: this.state.address,
         request: this.state.request,
         status: this.state.status      
@@ -72,23 +73,18 @@
     return (
         
       <Container fluid>
-        <Row className="Background">
+        <div className= "background">
             <Row>
           <Col size="md-12">
               <h1>Welcome Home.</h1> 
                   </Col>
             </Row>
             <Row>
-                  <Col size="md-6">
+            <Col size="md-1">
+                </Col>
+            <Col size="md-4">
                       <h2>Create Request</h2>
             <form>
-              <Input
-                value={this.state.nhname}
-                onChange={this.handleInputChange}
-                name="Neighborhood Name"
-                placeholder="Neighborhood Name (required)"
-              />
-      
               <Input
                 value={this.state.address}
                 onChange={this.handleInputChange}
@@ -109,7 +105,9 @@
               </FormBtn>
             </form>
                   </Col>
-          <Col size="md-6">
+          <Col size="md-2">
+          </Col>
+          <Col size="md-4">
               <h2>My Requests</h2>
             {this.state.allrequests.length ? (
               <List>
@@ -118,7 +116,7 @@
                     <ListItem key={request._id}>
                       <a href={"/request/" + request._id}>
                         <strong>
-                          {request.nhname} by {request.address}
+                          {request.neighborhood} by {request.address}
                         </strong>
                       </a>
                       <DeleteBtn onClick={() => this.deleteRequest(request._id)} />
@@ -130,16 +128,53 @@
               <h3>No Results to Display</h3>
             )}
           </Col>
+          <Col size="md-1">
+          </Col>
             </Row>
+          <Row>
           <Col size="md-12">
               <h2>Recomended Companies</h2>
+          </Col>
+          <Col size="md-1">
+          </Col>
+          <Col size="md-4">
                 <h3>Plumbers</h3>
                 <h4>Troys Plumbing
                     123 Plumbing Street
                     Orlando, Florida 32822</h4>
-            
           </Col>
-        </Row>
+          <Col size="md-2">
+          </Col>
+          <Col size="md-4">
+                <h3>Electricians</h3>
+                <h4>Troys Electrical
+                    123 Electrical Street
+                    Orlando, Florida 32822</h4>
+          </Col>
+          <Col size="md-1">
+          </Col>
+            </Row>
+          <Row>
+          <Col size="md-1">
+          </Col>
+          <Col size="md-4">
+                <h3>Painters</h3>
+                <h4>Troys Painting
+                    123 Painting Street
+                    Orlando, Florida 32822</h4>
+          </Col>
+          <Col size="md-2">
+          </Col>
+          <Col size="md-4">
+                <h3>Roofers</h3>
+                <h4>Troys Roofing
+                    123 Roofing Street
+                    Orlando, Florida 32822</h4>
+          </Col>
+          <Col size="md-1">
+          </Col>
+            </Row>
+        </div>
       </Container>
     );
   }
